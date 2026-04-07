@@ -16,7 +16,7 @@ elif z == '-':
 elif z == '*':
     print(f"Wynik mnozenia: {a*b}")
 
-elif z == '\':
+elif z == '/':
     if b == 0:
         print("Nie mozna dzielic przez 0.")
     else:
