@@ -2,7 +2,7 @@ def oblicz_pole_prostokata(a, b):
     
     # Tutaj dodaj docstring
     
-    """ Ta funkcja przyjmuje 2 liczby nieujemne i oblicza pole powierzchni prostokąta. """
+    """ This function takes two non-negative numbers and calculates the area of a rectangle. """
     
     # calculating the area of that rectangle
     pole = a * b
