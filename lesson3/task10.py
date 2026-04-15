@@ -4,10 +4,10 @@ def oblicz_pole_prostokata(a, b):
     
     """ Ta funkcja przyjmuje 2 liczby nieujemne i oblicza pole powierzchni prostokąta. """
     
-    # Tutaj dodaj komentarz
+    # calculating the area of that rectangle
     pole = a * b
     
-    # Tutaj dodaj komentarz
+    # returns the value
     return pole
 
 bok_a = 10
