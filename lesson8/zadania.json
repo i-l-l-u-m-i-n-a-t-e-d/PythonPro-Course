@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Kupić zakupy",
+        "description": "Mleko, chleb, jajka i warzywa",
+        "completed": false
+    },
+    {
+        "id": 2,
+        "title": "Dokończyć pracę domową z programowania",
+        "description": "Wykonać mini-projekt: aplikacja do zarządzania listą zadań",
+        "completed": false
+    },
+    {
+        "id": 3,
+        "title": "Przeczytać książkę",
+        "description": "Przeczytać co najmniej 20 stron",
+        "completed": true
+    },
+    {
+        "id": 4,
+        "title": "Notatka",
+        "description": "Notatka na temat pogody.",
+        "completed": false
+    },
+    {
+        "id": 5,
+        "title": "Sprzatanie",
+        "description": "Posprzatac w pokoju.",
+        "completed": false
+    }
+]
