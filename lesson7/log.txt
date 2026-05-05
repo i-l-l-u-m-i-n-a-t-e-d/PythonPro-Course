@@ -1,0 +1,4 @@
+ValueError: Wpisane dane sa niepoprawne. 
+ZeroDivisionError: Nie mozna dzielic przez 0. 
+ValueError: Wpisane dane sa niepoprawne. 
+Wprowadzono niepoprawny znak operacji. 
