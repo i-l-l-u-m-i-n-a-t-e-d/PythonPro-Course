@@ -1,0 +1,3 @@
+First line in this file.
+Linia dodana w galaz-A.
+Linia dodana w main.
