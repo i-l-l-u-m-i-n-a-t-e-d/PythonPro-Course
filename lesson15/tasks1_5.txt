@@ -1,0 +1,44 @@
+task 1
+
+GET B, POST D, DELETE A, PUT C
+
+task 2
+
+Różnica między Klientem a Sewerem w takiej architekturze wynika z funkcji 
+jakie spełnia serwer który wysyła odpowiedzi na żądania 
+klienata ale oprócz tego musi ciągle nasłuchiwać i przetwarzać przyjęte 
+żądania klienata. 
+
+Przykłady 
+
+Klient:
+aplikacja mobilna 
+
+Serwer:
+
+serwer WWW (np. Apache)
+
+task 3
+
+
+get_request = {
+"start_line": {
+"method": "GET",
+"target": "/api/articles",
+"version": "HTTP/1.1"
+},
+"headers": {
+"Host": "my-blog.com",
+"User-Agent": "Chrome",
+"Accept": "application/json"
+},
+"body": None 
+}
+
+task 4
+
+Najprawdopodobniej wysyła metodę GET. 
+
+task 5
+
+protokół IP należy do warsty internetowej TCP/IP
