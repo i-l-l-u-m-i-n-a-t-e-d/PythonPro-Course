@@ -1,11 +1,5 @@
 word = input("Wpisz slowo: ")
 
-c = 1
+for index, letter in enumerate(word):
 
-for i in word:
-
-    print(f"{c}: {i}", sep="\n")
-
-    c += 1
-
-
+    print(f"{index}: {letter}")
