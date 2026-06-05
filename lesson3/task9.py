@@ -6,4 +6,5 @@ x = x + 1
 
 print(id(x))
 
-#identyfikator sie zmienil poniewaz wartosc zmiennej sie zmienila
+# id sie zmienilo, bo po dodaniu 1 x ma juz inna wartosc
+# Python tworzy nowy obiekt dla 11, zamiast zmieniac stare 10
