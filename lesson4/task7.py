@@ -1,18 +1,11 @@
-
 sentence = input("Wpisz zdanie: ").strip().lower()
 
 
 
-for i in sentence:
+for i, ch in enumerate(sentence):
 
-    if i not in "aeiouy": 
+    if ch not in "aeiouy": 
         
         continue
     
-    if sentence.index(i) == 0:
-
-        print(i.upper())
-    
-    else:
-        print(i)
-   
+    print(ch)
