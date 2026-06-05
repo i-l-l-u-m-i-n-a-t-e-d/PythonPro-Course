@@ -1,16 +1,7 @@
-import datetime
-
-n = datetime.datetime.now()
-
-year = n.year
-
 name = input("Podaj swoje imię: ").capitalize()
-year_of_birth = int(input("Podaj swój rok urodzenia (tylko cyfry): "))
+year_of_birth = int(input("Podaj swój rok urodzenia: "))
 
-error = False
-if len(str(year_of_birth)) != 4:
-    error=True
-    print("Wpisałeś niepoprawny rok urodzenia.")
+year = 2025
+age = year - year_of_birth
 
-if not error:
-    print(f"Cześć, {name}! W 2027 roku będziesz mieć  {year+1 - year_of_birth} lat.")
+print(f"Cześć, {name}! W 2025 roku będziesz mieć około {age} lat.")
