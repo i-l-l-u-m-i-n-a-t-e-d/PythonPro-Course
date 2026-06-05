@@ -1,15 +1,9 @@
 i = 10
 
-while i >= 0:
+while i >= 1:
 
-    print(i, sep='\n')
+    print(i)
 
     i -= 1
 
- 
-    
-
 print("Start!")
-
-
-
