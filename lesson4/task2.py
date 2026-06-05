@@ -2,48 +2,27 @@ def data_val(i):
 
     validation = ("tak", "nie")
 
-    r = 0
+    if i in validation:
+        return True
 
-    for j in validation:
+    return False
 
-        if i == j:
-            r += 1
-    
-    if r == 0:
-        return False
-    
-    
-    return True
 
+base_price = 100
 
 status = input("Czy jestes studentem? (wpisz tak/nie) ").lower()
 age = int(input("Ile masz lat? (wpisz tylko cyfry) "))
 
+if data_val(status) and age >= 0:
 
-if data_val(status):
-
-    
     if status == "tak" or age < 18:
+        price = base_price * 0.5
 
-        print("Cena biletu wynosi 50 PLN.")
-    
-    elif status =="nie" and age < 18:
-
-        print("Cena biletu wynosi 50 PLN.")
-    
     else:
+        price = base_price
 
-        print("Cena biletu wynosi 100 PLN.")
+    print(f"Cena biletu wynosi {price} PLN.")
 
 else:
 
-    print("Niepoprawnie odpowiedziano na pytanie o status studenta.")
-
-
-
-
-
-
-
-
-
+    print("Niepoprawnie podano dane.")
