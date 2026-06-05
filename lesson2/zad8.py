@@ -1,8 +1,10 @@
 liczba_str = "5.8"
 
-f_liczba_str = float(liczba_str)
+liczba_float = float(liczba_str)
+liczba_int = int(liczba_float)
 
-i_liczba_str = int(f_liczba_str)
+print("Po konwersji na float:", liczba_float)
+print("Po konwersji na int:", liczba_int)
 
-print(i_liczba_str) #liczba zostala zaokraglona do calosci (z 5.8 na 5)
-
+# Podczas konwersji float na int część dziesiętna zostaje obcięta.
+# Liczba 5.8 nie została zaokrąglona do 6, tylko obcięta do 5.
