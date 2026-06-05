@@ -1,3 +1,1 @@
-#sep = ", "
-
-print("jajka","mleko","chleb", sep=",")
+print("jajka", "mleko", "chleb", sep=", ")
