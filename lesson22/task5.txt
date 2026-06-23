@@ -1,0 +1,61 @@
+mkdir lesson23_admin
+cd lesson23_admin
+
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+pip install django pillow
+
+django-admin startproject config .
+python manage.py startapp cars
+
+
+# + task2.py jako cars/models.py
+# + task3.py jako cars/admin.py
+# + fragmenty  do config/settings.py i config/urls.py
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py check
+
+
+cat > seed_demo.py <<'PY'
+
+from decimal import Decimal
+from pathlib import Path
+from PIL import Image
+from cars.models import Car, Dealer
+
+Path("media/cars").mkdir(parents=True, exist_ok=True)
+image_path = Path("media/cars/test_car.png")
+if not image_path.exists():
+    Image.new("RGB", (300, 180), (30, 90, 160)).save(image_path)
+
+dealer, _ = Dealer.objects.get_or_create(
+    name="Demo Dealer",
+    defaults={"address": "ul. Testowa 1, 00-000 Warszawa"},
+)
+
+Car.objects.update_or_create(
+    brand="Ford",
+    model="Mustang",
+    year=2024,
+    defaults={
+
+        "price": Decimal("300000.00"),
+        "description": "Samochód demonstracyjny",
+        "photo": "cars/test_car.png",
+        "owner_website": "https://example.com",
+        "is_available": True,
+        "dealer": dealer,
+    },
+)
+
+print("Utworzono dane testowe: Dealer + Ford Mustang ze zdjęciem.")
+PY
+
+python manage.py shell -c "exec(open('seed_demo.py', encoding='utf-8').read())"
+
+python manage.py runserver
+
