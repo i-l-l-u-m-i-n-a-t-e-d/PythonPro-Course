@@ -1,0 +1,5 @@
+komendy 
+
+python -m pip install Faker
+python -m pip freeze > requirements.txt
+
