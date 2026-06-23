@@ -1,0 +1,47 @@
+# sciezka: core/views.py
+
+from django.core.paginator import Paginator
+from django.shortcuts import render
+from .models import Note
+
+
+def note_list_view(request):
+    notes = Note.objects.all().order_by("id")
+    paginator = Paginator(notes, 3)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, "notes/note_list.html", {"page_obj": page_obj})
+
+
+# sciezka: templates/notes/note_list.html
+
+{% extends "base.html" %}
+
+{% block title %}Notatki{% endblock %}
+
+{% block content %}
+    <h2>Notatki</h2>
+
+    <ul>
+        {% for note in page_obj %}
+            <li>
+                <a href="{% url 'note-detail' note.id %}">{{ note.title }}</a>
+            </li>
+        {% empty %}
+            <li>Brak notatek.</li>
+        {% endfor %}
+    </ul>
+
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">poprzednia</a>
+        {% endif %}
+
+        <span>Strona {{ page_obj.number }} z {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">następna</a>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,41 @@
+from django.shortcuts import render
+from .models import Product
+
+
+def product_list_view(request):
+    products = Product.objects.select_related("category").all().order_by("name")
+    return render(request, "products/product_list.html", {"products": products})
+
+
+# sciezka: core/urls.py
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("products/", views.product_list_view, name="product-list"),
+]
+
+
+# sciezka: templates/products/product_list.html
+
+{% extends "base.html" %}
+
+{% block title %}Lista produktów{% endblock %}
+
+{% block content %}
+    <h2>Lista produktów</h2>
+
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }} - {{ product.price }} PLN
+                {% if product.category %}
+                    | Kategoria: {{ product.category.name }}
+                {% endif %}
+            </li>
+        {% empty %}
+            <li>Brak produktów do wyświetlenia.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

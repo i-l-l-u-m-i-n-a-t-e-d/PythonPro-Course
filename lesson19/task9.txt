@@ -1,0 +1,47 @@
+# sciezka: core/views.py
+
+from django.shortcuts import get_object_or_404, render
+from .models import Category, Product
+
+
+def category_products_view(request, category_id):
+    category = get_object_or_404(Category, id=category_id)
+    products = Product.objects.filter(category=category).order_by("name")
+
+    context = {
+        "category": category,
+        "products": products,
+    }
+
+    return render(request, "products/category_products.html", context)
+
+
+# sciezka: core/urls.py
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("category/<int:category_id>/", views.category_products_view, name="category-products"),
+]
+
+
+# Ścieżka w projekcie: templates/products/category_products.html
+
+{% extends "base.html" %}
+
+{% block title %}Kategoria: {{ category.name }}{% endblock %}
+
+{% block content %}
+    <h2>Produkty w kategorii: {{ category.name }}</h2>
+
+    <ul>
+        {% for product in products %}
+            <li>{{ product.name }} - {{ product.price }} PLN</li>
+        {% empty %}
+            <li>Brak produktów w tej kategorii.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'product-list' %}">Powrót do listy produktów</a>
+{% endblock %}

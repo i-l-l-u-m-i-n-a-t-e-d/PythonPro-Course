@@ -1,0 +1,78 @@
+# sciezka: core/models.py
+
+from django.db import models
+
+
+class Note(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
+# sciezka: core/views.py
+
+from django.shortcuts import get_object_or_404, render
+from .models import Note
+
+
+def note_list_view(request):
+    notes = Note.objects.all().order_by("id")
+    return render(request, "notes/note_list.html", {"notes": notes})
+
+
+def note_detail_view(request, note_id):
+    note = get_object_or_404(Note, id=note_id)
+    return render(request, "notes/note_detail.html", {"note": note})
+
+
+# sciezka: core/urls.py
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path("notes/", views.note_list_view, name="note-list"),
+    path("note/<int:note_id>/", views.note_detail_view, name="note-detail"),
+]
+
+
+# sciezka: templates/notes/note_list.html
+
+{% extends "base.html" %}
+
+{% block title %}Notatki{% endblock %}
+
+{% block content %}
+    <h2>Notatki</h2>
+
+    <ul>
+        {% for note in notes %}
+            <li>
+                <a href="{% url 'note-detail' note.id %}">{{ note.title }}</a>
+            </li>
+        {% empty %}
+            <li>Brak notatek.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
+# sciezka: templates/notes/note_detail.html
+
+{% extends "base.html" %}
+
+{% block title %}{{ note.title }}{% endblock %}
+
+{% block content %}
+    <h2>{{ note.title }}</h2>
+    <p>{{ note.content }}</p>
+    <a href="{% url 'note-list' %}">Powrót do listy notatek</a>
+{% endblock %}
+
+
+# Komendy po zapisaniu modelu:
+
+# python manage.py makemigrations
+# python manage.py migrate
