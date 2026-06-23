@@ -1,0 +1,35 @@
+python manage.py shell
+
+
+
+from articles.models import Article, Category
+
+sport = Category.objects.create(name="Sport")
+technologia = Category.objects.create(name="Technologia")
+kultura = Category.objects.create(name="Kultura")
+
+Article.objects.create(
+    title="Nowy artykuł o Django",
+    content="Treść artykułu o potędze ORM.",
+    category=technologia,
+    is_published=True,
+)
+
+Article.objects.create(
+    title="Artykuł sportowy",
+    content="Treść artykułu sportowego.",
+    category=sport,
+    is_published=True,
+)
+
+Article.objects.create(
+    title="Artykuł kulturalny",
+    content="Treść artykułu kulturalnego.",
+    category=kultura,
+    is_published=True,
+)
+
+sport_category = Category.objects.get(name="Sport")
+print(sport_category.name)
+
+

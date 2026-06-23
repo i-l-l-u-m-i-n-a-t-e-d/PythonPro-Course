@@ -1,0 +1,129 @@
+articles/templates/articles/article_list.html
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Artykułów</title>
+    <link rel="stylesheet" href="{% static 'articles/style.css' %}">
+</head>
+<body>
+    <h1>Wszystkie artykuły</h1>
+
+    <form method="get" action="">
+        <label for="search">Szukaj po tytule:</label>
+        <input id="search" type="text" name="q" value="{{ query }}">
+        <button type="submit">Szukaj</button>
+    </form>
+
+    {% if articles %}
+        <ul>
+            {% for article in articles %}
+                <li>
+                    <h2>
+                        {{ article.title }}
+                        {% if article.pub_date >= recent_limit %}
+                            <span>NOWOŚĆ!</span>
+                        {% endif %}
+                    </h2>
+                    <p>Opublikowano: {{ article.pub_date|date:"d.m.Y" }}</p>
+                    {% if article.category %}
+                        <p>Kategoria:
+                            <a href="{% url 'category-detail' article.category.id %}">
+                                {{ article.category.name }}
+                            </a>
+                        </p>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak artykułów do wyświetlenia.</p>
+    {% endif %}
+
+    <p><a href="{% url 'category-list' %}">Lista kategorii</a></p>
+</body>
+</html>
+
+
+articles/templates/articles/category_list.html
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista kategorii</title>
+    <link rel="stylesheet" href="{% static 'articles/style.css' %}">
+</head>
+<body>
+    <h1>Kategorie</h1>
+
+    {% if categories %}
+        <ul>
+            {% for category in categories %}
+                <li>
+                    <a href="{% url 'category-detail' category.id %}">
+                        {{ category.name }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak kategorii do wyświetlenia.</p>
+    {% endif %}
+
+    <p><a href="{% url 'article-list' %}">Lista artykułów</a></p>
+</body>
+</html>
+
+
+articles/templates/articles/category_detail.html
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category.name }}</title>
+    <link rel="stylesheet" href="{% static 'articles/style.css' %}">
+</head>
+<body>
+    <h1>{{ category.name }}</h1>
+
+    <h2>Artykuły w tej kategorii</h2>
+
+    {% if category.article_set.all %}
+        <ul>
+            {% for article in category.article_set.all %}
+                <li>{{ article.title }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Brak artykułów w tej kategorii.</p>
+    {% endif %}
+
+    <p><a href="{% url 'category-list' %}">Wróć do kategorii</a></p>
+</body>
+</html>
+
+
+articles/static/articles/style.css
+
+
+body {
+    background-color: #f0f8ff;
+    font-family: Arial, sans-serif;
+    margin: 40px;
+}
+
+a {
+    color: #0645ad;
+}
+
+span {
+    font-weight: bold;
+}
