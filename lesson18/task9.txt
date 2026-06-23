@@ -1,0 +1,12 @@
+Zadanie 9 - Zarzadzanie danymi w panelu admina
+Cel: dodanie co najmniej 3 ogloszen przez interfejs graficzny oraz sprawdzenie edycji i usuniecia.
+
+Komendy:
+cd lekcja19_django
+source .venv/bin/activate
+python manage.py runserver
+
+Adres:
+http://127.0.0.1:8000/admin/
+
+- potwierdzenie na rekordy.png

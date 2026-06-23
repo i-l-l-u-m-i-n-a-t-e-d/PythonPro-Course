@@ -1,0 +1,11 @@
+cd lekcja19_django
+source .venv/bin/activate
+python manage.py runserver
+
+aktywacja środowiska
+
+.\.venv\Scripts\Activate.ps1 
+
+
+adres: http://127.0.0.1:8000/
+

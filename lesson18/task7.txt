@@ -1,0 +1,11 @@
+cd lekcja19_django
+source .venv/bin/activate
+python manage.py makemigrations ogloszenia
+python manage.py migrate
+python manage.py check
+
+
+aktywacja srodowiska:
+
+.\.venv\Scripts\Activate.ps1
+
