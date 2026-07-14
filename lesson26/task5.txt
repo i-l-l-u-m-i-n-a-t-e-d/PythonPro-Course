@@ -1,0 +1,5 @@
+W terminalu wykonałem:
+
+python manage.py shell -c "from django.core.cache import cache; cache.clear()"
+
+Polecenie usunęło wszystkie dane z pamięci podręcznej.

@@ -1,0 +1,18 @@
+python manage.py shell
+
+from django.core.cache import cache
+cache.set("my_key", "hello world", 30)
+cache.get("my_key")
+
+# po odczekaniu ponad 30 sekund
+cache.get("my_key")
+
+
+
+'hello world'
+None
+
+
+Wartość została zapisana w pamięci podręcznej na 30 sekund. Przy pierwszym
+odczycie klucz jeszcze istniał, dlatego zwrócono „hello world”. Po upływie
+30 sekund klucz wygasł, więc cache.get() zwróciło None.
