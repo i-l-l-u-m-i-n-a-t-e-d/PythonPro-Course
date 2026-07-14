@@ -1,0 +1,17 @@
+Najpierw uruchomiłem serwer:
+
+python manage.py runserver
+
+Następnie w Postmanie wysłałem żądanie:
+
+Metoda: POST
+Adres: http://127.0.0.1:8000/auth/users/
+Body: raw, JSON
+
+{
+  "username": "student1",
+  "password": "StrongPassword123",
+  "email": "student1@example.com"
+}
+
+Serwer zwrócił status 201 Created, więc konto zostało utworzone. Po zalogowaniu do panelu administracyjnego Django sprawdziłem listę użytkowników. Użytkownik student1 znajdował się w bazie danych.

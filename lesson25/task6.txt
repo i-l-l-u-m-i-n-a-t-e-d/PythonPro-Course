@@ -1,0 +1,23 @@
+W Postmanie wysłałem żądanie:
+
+Metoda: POST
+Adres: http://127.0.0.1:8000/auth/jwt/create/
+Body: raw, JSON
+
+{
+  "username": "student1",
+  "password": "StrongPassword123"
+}
+
+Serwer zwrócił status 200 OK oraz dwa tokeny: access i refresh.
+
+Token access wkleiłem na stronie jwt.io. W sekcji Payload znajdowały się między innymi następujące dane:
+
+{
+  "token_type": "access",
+  "exp": 1783727067,
+  "iat": 1783727057,
+  "user_id": "1"
+}
+
+W payloadzie znajduje się pole user_id. Różnica między wartościami exp i iat wynosi 10 sekund, więc token wygasał 10 sekund po utworzeniu. W mojej strefie czasowej wartość exp odpowiadała dacie 11 lipca 2026 r., godz. 01:44:27.
