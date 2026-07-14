@@ -1,0 +1,11 @@
+Flower - zadanie 19
+
+Instalacja:
+.venv\Scripts\python.exe -m pip install flower
+
+Komenda uruchomienia:
+celery -A config flower
+
+Oczekiwany adres:
+http://localhost:5555
+
