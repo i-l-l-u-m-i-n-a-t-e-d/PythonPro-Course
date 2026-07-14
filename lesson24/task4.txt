@@ -1,0 +1,51 @@
+W Postmanie wysłano trzy zapytania `POST` na adres:
+
+`http://127.0.0.1:8000/api/products/`
+
+Produkt 1:
+
+
+{
+  "name": "Laptop",
+  "price": "3500.00"
+}
+
+
+Produkt 2:
+
+
+{
+  "name": "Klawiatura",
+  "price": "150.00"
+}
+
+
+Produkt 3:
+
+
+{
+  "name": "Mysz",
+  "price": "80.00"
+}
+
+
+Następnie wysłano zapytanie `GET` na ten sam adres. Otrzymano odpowiedź:
+
+[
+  {
+    "id": 1,
+    "name": "Laptop",
+    "price": "3500.00"
+  },
+  {
+    "id": 2,
+    "name": "Klawiatura",
+    "price": "150.00"
+  },
+  {
+    "id": 3,
+    "name": "Mysz",
+    "price": "80.00"
+  }
+]
+

@@ -1,0 +1,11 @@
+Użyte komendy:
+
+python -m pip install djangorestframework
+django-admin startproject config .
+python manage.py startapp api
+
+Do pliku config/settings.py dodano aplikacje:
+
+"rest_framework"
+"api"
+
