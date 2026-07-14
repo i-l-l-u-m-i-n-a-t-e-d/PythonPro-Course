@@ -1,0 +1,35 @@
+Przegląd projektu BiblioTech
+
+Projekt:
+System katalogu bibliotecznego i rezerwacji książek zbudowany w Django.
+
+Główna struktura:
+- config/ - ustawienia projektu i główne adresy URL.
+- library/ - modele, widoki, logika rezerwacji, panel administratora, API, testy i komenda seedująca.
+- templates/ - strony publiczne, strony logowania i panel rezerwacji użytkownika.
+- static/ - style CSS i lokalne zasoby.
+- media/ - przesłane zdjęcia autorów i okładki książek.
+- requirements.txt - zależności projektu.
+
+Nazwa aplikacji:
+library
+
+Główne adresy strony:
+- / - strona główna.
+- /books/ - katalog, wyszukiwarka oraz filtrowanie po autorze i gatunku.
+- /books/<id>/ - szczegóły książki i możliwość rezerwacji.
+- /reservations/ - panel rezerwacji zalogowanego użytkownika.
+- /accounts/register/ - rejestracja.
+- /accounts/login/ - logowanie.
+- /accounts/logout/ - wylogowanie.
+- /admin/ - panel administratora Django.
+
+Główne adresy API i dokumentacji:
+- /api/books/
+- /api/authors/
+- /api/genres/
+- /api/copies/
+- /api/reservations/
+- /api/schema/
+- /api/schema/swagger-ui/
+- /api/schema/redoc/

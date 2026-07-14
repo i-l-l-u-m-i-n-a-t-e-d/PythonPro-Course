@@ -1,0 +1,52 @@
+Uruchomione polecenia
+
+python -m venv .venv
+.venv\Scripts\python.exe -m pip install Django djangorestframework drf-spectacular Faker Pillow
+.venv\Scripts\python.exe -m pip install drf-spectacular-sidecar
+.venv\Scripts\django-admin.exe startproject config .
+.venv\Scripts\python.exe manage.py startapp library
+.venv\Scripts\python.exe manage.py makemigrations
+.venv\Scripts\python.exe manage.py check
+.venv\Scripts\python.exe manage.py makemigrations --check --dry-run
+.venv\Scripts\python.exe manage.py migrate
+.venv\Scripts\python.exe manage.py test
+.venv\Scripts\python.exe manage.py seed_db --clear
+.venv\Scripts\python.exe -m pip freeze > requirements.txt
+.venv\Scripts\python.exe manage.py runserver
+.venv\Scripts\python.exe manage.py runserver 127.0.0.1:8001
+
+Wyniki weryfikacji
+
+python manage.py check:
+System check identified no issues (0 silenced).
+
+python manage.py makemigrations --check --dry-run:
+No changes detected.
+
+python manage.py migrate:
+Wszystkie migracje Django i aplikacji library zostały zastosowane w bazie SQLite.
+
+python manage.py test:
+Znaleziono 8 testów.
+Uruchomiono 8 testów.
+Wynik: OK.
+
+python manage.py seed_db --clear:
+Utworzono 12 autorów, 10 gatunków i 24 książki.
+
+Dodatkowa weryfikacja:
+- Wygenerowana baza zawierała 85 egzemplarzy książek.
+- Użytkownik demonstracyjny: demo / demo12345.
+- Strona główna zwróciła kod 200.
+- Katalog zwrócił kod 200.
+- Strona szczegółów książki zwróciła kod 200.
+- Wyszukiwarka zwróciła kod 200 i znalazła szukaną książkę.
+- Filtry autora i gatunku zwróciły kod 200.
+- Próba rezerwacji bez logowania przekierowała do strony logowania.
+- Rezerwacja po zalogowaniu zmieniła status egzemplarza na zarezerwowany.
+- Panel rezerwacji użytkownika zwrócił kod 200.
+- Panel administratora przekierował niezalogowanego użytkownika do logowania.
+- /api/schema/ zwrócił kod 200.
+- /api/schema/swagger-ui/ zwrócił kod 200.
+- /api/schema/redoc/ zwrócił kod 200.
+
