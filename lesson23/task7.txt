@@ -1,0 +1,9 @@
+Mechanizm `next` w Django
+
+Gdy niezalogowany użytkownik próbuje wejść na stronę z `@login_required`, Django przekierowuje go na stronę logowania. Do adresu dodaje parametr `next`, który zapamiętuje poprzednią stronę.
+
+Przykład:
+
+`/profile/` → `/login/?next=/profile/`
+
+Po zalogowaniu użytkownik wraca na `/profile/`. Działanie to potwierdza test `test_anonymous_user_is_redirected_from_profile`.
