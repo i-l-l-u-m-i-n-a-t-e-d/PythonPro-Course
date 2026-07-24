@@ -1,59 +1,46 @@
-while True:
+file = open("log.txt", "a")
 
-    file = open("log.txt", 'a')
+try:
 
-    try:
-        
-        a = float(input("Podaj 1 liczbe: ").replace(",","."))
-        b = float(input("Podaj 2 liczbe: ").replace(",","."))
+    while True:
 
-        operation = input("Wybierz operacje (wpisz: +,-,* lub /): ").strip()
+        try:
 
-      
-            
-        
-    except ValueError as e:
+            a = float(input("Podaj 1 liczbe: ").replace(",", "."))
+            b = float(input("Podaj 2 liczbe: ").replace(",", "."))
 
-        error = "ValueError: Wpisane dane sa niepoprawne. \n"
-        print(e)
-        file.write(e)
+            operation = input(
+                "Wybierz operacje (wpisz: +,-,* lub /): "
+            ).strip()
 
-            
-        
-    else:
+            if operation == "+":
 
-        if operation == "+":
+                print(f"a+b to: {a+b}")
 
-            print(f"a+b to: {a+b}")
-            
-        elif operation == "-":
+            elif operation == "-":
 
-            print(f"a-b to: {a-b}")
+                print(f"a-b to: {a-b}")
 
-        elif operation == "*":
+            elif operation == "*":
 
-            print(f"a*b to: {a*b}")
+                print(f"a*b to: {a*b}")
 
-        elif operation == "/":
-
-            try:
+            elif operation == "/":
 
                 print(f"a/b to: {a/b}")
-                
-            except ZeroDivisionError:
 
-                error = "ZeroDivisionError: Nie mozna dzielic przez 0. \n"
-                print(error)
-                file.write(error)
+            else:
 
-        else:
+                raise ValueError("Wprowadzono niepoprawny znak operacji.")
 
-            error = "Wprowadzono niepoprawny znak operacji. \n"
-            print(error)
+        except Exception as e:
+
+            error = f"{type(e).__name__}: {str(e)}\n"
+            print(error, end="")
             file.write(error)
-        
-    finally:
-            
-        print("Kolejna operacja...")
-        file.close()
 
+        print("Kolejna operacja...")
+
+finally:
+
+    file.close()
